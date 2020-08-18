@@ -1,0 +1,40 @@
+name: parameter_net_syn_table
+gpu_id: [0]
+type: PCPGAN
+
+dataset:
+  test_table:
+    name: table free
+    mode: single_primitive
+    sub_datasets:
+      cube_pth:
+        class: table
+        shuffle: False
+        root_path: /orion/u/jiangthu/datasets/SynCube/table_free_test
+
+model: 
+  G: 
+    model_type: single_primitive
+    conv_channel_feat: [3, 32, 64]
+    num_param: 6
+    dim_param: 32
+    bnorm: false
+    num_block: 3
+    norm_diag: true
+    num_l: 30
+  D: 
+    model_type: pointnet
+    conv_channel: [3, 64, 128]
+    fc_channel: [128, 128, 64, 1]
+    closing_with_sig: false
+     
+train: 
+    noise_param:
+      mu: 0
+      std: 1
+      noise_dim: 30
+
+
+path:
+  root: /orion/u/jiangthu/projects/Learning-part-correlation
+  pretrain_model_G: ../experiment/parameter_net_syn_table_Gboost_45/model/400000_G.pth
