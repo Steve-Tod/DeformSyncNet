@@ -1,5 +1,4 @@
 import os
-import h5py
 import numpy as np
 import json
 from itertools import product

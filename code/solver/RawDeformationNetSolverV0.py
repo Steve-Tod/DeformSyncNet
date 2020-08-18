@@ -1,7 +1,6 @@
 import logging
 import os
 import sys
-import h5py
 from collections import OrderedDict
 import numpy as np
 import matplotlib.pyplot as plt
@@ -15,7 +14,7 @@ from torch import nn
 from .BaseSolver import BaseSolver
 from model import define_net
 from model.loss.ChamferDistancePytorch.chamfer3D.dist_chamfer_3D import chamfer_3DDist
-from model.loss.emd import EMD
+#from model.loss.emd import EMD
 from util.util_dir import mkdir
 from util.util_visual import plot_3d_point_cloud
 
@@ -65,10 +64,10 @@ class RawDeformationNetSolverV0(BaseSolver):
             self.cri_dict[k]['weight'] = v['weight']
             if v['loss_type'] == 'CD':
                 self.cri_dict[k]['cri'] = self.calc_nnd
-            elif v['loss_type'] == 'EMD':
-                if not hasattr(self, 'emd'):
-                    self.emd = EMD()
-                self.cri_dict[k]['cri'] = self.calc_emd
+            #elif v['loss_type'] == 'EMD':
+            #    if not hasattr(self, 'emd'):
+            #        self.emd = EMD()
+            #    self.cri_dict[k]['cri'] = self.calc_emd
             elif v['loss_type'] == 'l2':
                 self.cri_dict[k]['cri'] = nn.MSELoss()
             else:

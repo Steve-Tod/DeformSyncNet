@@ -1,5 +1,4 @@
 import os
-import h5py
 import subprocess
 import numpy as np
 from PIL import Image
@@ -113,22 +112,3 @@ def get_rendered_image_of_param(param, ver_mat, ver_vec, triangles, orig_ids, fa
     p = subprocess.Popen(('rm', '-r', tmp_dir))
     p.wait()
     return img
-
-def render(param, param_mask, path, renderer_path, tmp_dir):
-    
-    with h5py.File(path, 'r') as f:
-        ver_mat = np.array(f['vertices_mat'])
-        ver_vec = np.zeros(ver_mat.shape[0])
-        triangles = np.array(f['faces'])
-        orig_ids = np.array(f['orig_ids'])
-        face_labels = np.array(f['face_labels'])
-        default_param = np.array(f['default_param'])
-        
-    if param is None:
-        param_tmp = default_param
-    else:
-        num_param = int(param_mask.sum().item())
-        param_tmp = param[:num_param].cpu()
-    return get_rendered_image_of_param(param_tmp, ver_mat, None, triangles,
-                                       orig_ids, face_labels,
-                                       renderer_path, tmp_dir)

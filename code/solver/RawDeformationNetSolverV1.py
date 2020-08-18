@@ -1,7 +1,6 @@
 import logging
 import os
 import sys
-import h5py
 from collections import OrderedDict
 import numpy as np
 import matplotlib.pyplot as plt
@@ -15,7 +14,6 @@ from torch import nn
 from .RawDeformationNetSolverV0 import RawDeformationNetSolverV0
 from model import define_net
 from model.loss.ChamferDistancePytorch.chamfer3D.dist_chamfer_3D import chamfer_3DDist
-from model.loss.emd import EMD
 from util.util_dir import mkdir
 from util.util_visual import plot_3d_point_cloud
 from metrics.miou_shape import calc_miou
