@@ -1,4 +1,4 @@
-# DeformationSyncNet
+# DeformSyncNet
 Pytorch implementation of  of DeformSyncNet: Deformation Transfer via Synchronized Shape Deformation Spaces (SIGGRAPH Asia 2020)
 
 ## Citation
