@@ -15,7 +15,7 @@ Pytorch implementation of  of DeformSyncNet: Deformation Transfer via Synchroniz
 - [PyTorch 1.3.1](https://pytorch.org/)
 - NVIDIA GPU + [CUDA 10.0](https://developer.nvidia.com/cuda-downloads)
 - Python packages: `pip install tqdm matplotlib tensorboardX pyyaml`
-- Submodule [ThibaultGROUEIX/ChamferDistancePytorch](https://github.com/ThibaultGROUEIX/ChamferDistancePytorch): run `git submodule update --init --recursive``
+- Submodule [ThibaultGROUEIX/ChamferDistancePytorch](https://github.com/ThibaultGROUEIX/ChamferDistancePytorch): run `git submodule update --init --recursive`
 
 ## Dataset Preparation
 
