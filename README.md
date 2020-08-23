@@ -21,9 +21,9 @@ Pytorch implementation of  of DeformSyncNet: Deformation Transfer via Synchroniz
 
 ### Download ShapeNet data
 
-**Full raw data(train, val and test)** can be downloaded [here](). Please download and unzip the `ShapeNetFullData.zip` file.
+**Full raw data(train, val and test)** can be downloaded with `wget --no-check-certificate https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/ShapeNetFullData.zip`. Please download and unzip the `ShapeNetFullData.zip` file.
 
-**Prepared test data** can be downloaded [here](). Please download and unzip the `ShapeNetTestData.zip` file.
+**Prepared test data** can be downloaded with `wget --no-check-certificate https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/ShapeNetTestData.zip`. Please download and unzip the `ShapeNetTestData.zip` file.
 
 ## Training
 

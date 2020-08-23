@@ -162,7 +162,7 @@ def main():
         label = json.load(f)
     deform_shapes = torch.cat(deform_shape_list, dim=0).transpose(1, 2).view(10, -1, 2048, 3).numpy()
     miou = calc_miou_top(category, deform_shapes, label, test_data_root)
-    print('Fitting Chamfer Distance: %.3f' % miou)
+    print('mIoU: %.3f' % miou)
     np.save(os.path.join(result_root, 'miou_deform_shapes.npy'), deform_shapes)
     print('Saved miou_deform_shapes(' + str(deform_shapes.shape) + ') to', os.path.join(result_root, 'miou_deform_shapes.npy'))
     
@@ -186,7 +186,7 @@ def main():
     transfer_shapes = torch.cat(transfer_shape_list, dim=0).transpose(1, 2).view(10, -1, 2048, 3).numpy()
     
     MMD_CD, COV_CD = calc_mmd_cov(ref_shapes, transfer_shapes)
-    print('MMD-CD: %.3e; COV_CD %.3f' % (MMD_CD, COV_CD))
+    print('MMD-CD: %.3e; Cov-CD %.3f' % (MMD_CD, COV_CD))
     np.save(os.path.join(result_root, 'transfer_deform_shapes.npy'), deform_shapes)
     np.save(os.path.join(result_root, 'transfer_shapes.npy'), transfer_shapes)
     print('Saved transfer_shapes(%s), transfer_deform_shapes(%s) to %s' % (str(transfer_shapes.shape), str(deform_shapes.shape), os.path.join(result_root, 'transfer_(deform_)shapes.npy')))

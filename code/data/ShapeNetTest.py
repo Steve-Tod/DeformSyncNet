@@ -86,29 +86,3 @@ class ShapeNetTransfer:
         
     def __len__(self):
         return self.num
-    
-class ShapeNetParallel:
-    def __init__(self, category, frame, root='/orion/u/jiangthu/datasets/ShapeNet/test_data/'):
-        self.root = os.path.join(root, category)
-        self.test_shapes = np.load(os.path.join(self.root, 'test_shapes.npy'))
-        self.src_idx = np.load(os.path.join(self.root, 'parallel_src_idx.npy'))
-        self.tgt1_idx = np.load(os.path.join(self.root, 'parallel_tgt1_idx.npy'))
-        self.tgt2_idx = np.load(os.path.join(self.root, 'parallel_tgt2_idx.npy'))
-        self.num = self.src_idx.shape[0]
-        self.frame = frame
-            
-            
-    def __getitem__(self, index):
-        src_shape = self.test_shapes[[self.src_idx[index]], :, :3]
-        tgt1_shape = self.test_shapes[[self.tgt1_idx[index]], :, :3]
-        tgt2_shape = self.test_shapes[[self.tgt2_idx[index]], :, :3]
-        if self.frame == 'tf':
-            return src_shape, tgt1_shape, tgt2_shape
-        elif self.frame == 'torch':
-            src_shape = torch.from_numpy(src_shape).transpose(1, 2).contiguous()
-            tgt1_shape = torch.from_numpy(tgt1_shape).transpose(1, 2).contiguous()
-            tgt2_shape = torch.from_numpy(tgt2_shape).transpose(1, 2).contiguous()
-            return src_shape, tgt1_shape, tgt2_shape
-        
-    def __len__(self):
-        return self.num
