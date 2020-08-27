@@ -190,6 +190,37 @@ def main():
     np.save(os.path.join(result_root, 'transfer_deform_shapes.npy'), deform_shapes)
     np.save(os.path.join(result_root, 'transfer_shapes.npy'), transfer_shapes)
     print('Saved transfer_shapes(%s), transfer_deform_shapes(%s) to %s' % (str(transfer_shapes.shape), str(deform_shapes.shape), os.path.join(result_root, 'transfer_(deform_)shapes.npy')))
+    
+    # Parallelogram
+    deform1_shape_list = []
+    deform2_shape_list = []
+    transfer12_shape_list = []
+    transfer21_shape_list = []
+    ds = ShapeNetParallel(category, 'torch', root=test_data_root)
+    for src, tgt1, tgt2 in tqdm(ds, total=len(ds)):
+        src_shape = src.cuda()
+        tgt1_shape = tgt1.cuda()
+        tgt2_shape = tgt2.cuda()
+        deform1_shape, transfer12_shape = model.deformation_transfer(src_shape, tgt1_shape, tgt2_shape)
+        deform2_shape, transfer21_shape = model.deformation_transfer(src_shape, tgt2_shape, tgt1_shape)
+        deform1_shape_list.append(deform1_shape.cpu())
+        deform2_shape_list.append(deform2_shape.cpu())
+        transfer12_shape_list.append(transfer12_shape.cpu())
+        transfer21_shape_list.append(transfer21_shape.cpu())
+        
+
+    deform1_shapes = torch.cat(deform1_shape_list, dim=0).transpose(1, 2)
+    deform2_shapes = torch.cat(deform2_shape_list, dim=0).transpose(1, 2)
+    transfer12_shapes = torch.cat(transfer12_shape_list, dim=0).transpose(1, 2)
+    transfer21_shapes = torch.cat(transfer21_shape_list, dim=0).transpose(1, 2)
+    parallel_cd = func_nnd(transfer12_shapes.cuda(), transfer21_shapes.cuda())
+    print('Parallelogram Chamfer distance: %.3e' % parallel_cd.mean().item())
+    
+    np.save(os.path.join(result_root, 'parallel_deform1_shapes.npy'), deform1_shapes.numpy())
+    np.save(os.path.join(result_root, 'parallel_deform2_shapes.npy'), deform2_shapes.numpy())
+    np.save(os.path.join(result_root, 'parallel_transfer12_shapes.npy'), transfer12_shapes.numpy())
+    np.save(os.path.join(result_root, 'parallel_transfer21_shapes.npy'), transfer21_shapes.numpy())
+    print('Saved paraller deform/transfer shapes (%s/%s) to %s' % (deform1_shapes.shape, transfer12_shapes.shape, os.path.join(result_root, 'parallel_deform/transfer1/2_shapes.npy')))
         
 if __name__ == '__main__':
     main()

@@ -1,0 +1,68 @@
+name: DSN_ShapeNet_Lamp
+use_tb_logger: true
+gpu_id: [0]
+type: RDNV1
+
+
+dataset:
+  train:
+    name: Raw ShapeNet Lamp Train
+    mode: raw_pair_shapenet_v0
+    root: /sailhome/jiangthu/jzy/projects/CycleConsistentDeformation/data/dataset_shapenet/
+    category: Lamp
+    num_point: 2048
+    phase: train
+    num_worker: 12
+    batch_size: 32
+    norm: True
+  val:
+    name: Raw ShapeNet Lamp Test
+    mode: raw_pair_shapenet_v0
+    root: /sailhome/jiangthu/jzy/projects/CycleConsistentDeformation/data/dataset_shapenet/
+    category: Lamp
+    num_point: 2048
+    phase: train
+    phase: val
+    norm: True
+
+model:
+  init: xavier
+  model_type: RDDNV0
+  dict:
+    # PointNet feature
+    version: 0
+    arch: PointNetSeg
+    feature_dim: 1536
+    norm_column: True
+  coeff:
+    version: 0
+    arch: PointNetCls
+    out_dim: 512
+    tanh: False
+
+train:
+  learning_rate: 0.0005
+  loss:
+    fit_CD:
+      loss_type: CD
+      weight: 100
+    sym_CD:
+      loss_type: CD
+      weight: 100
+      sym_axis: 2
+      
+  lr_gamma: 0.5
+  lr_scheme: MultiStepLR
+  lr_steps: [4.0e4, 8.0e4, 1.2e5]
+  niter: 1.5e5
+  save_freq: 5.0e3
+  val_freq: 5.0e3
+  val_metric: loss_fit_CD
+  weight_decay: 0
+
+logger:
+  print_freq: 500
+  num_save_image: 10
+
+path:
+  root: ../

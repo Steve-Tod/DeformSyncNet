@@ -1,25 +1,25 @@
-name: RDDN_PointNetSeg_CD_shapenet_table_normcol_normpoint_c512
+name: DSN_ShapeNet_Car
 use_tb_logger: true
-gpu_id: [2]
+gpu_id: [0]
 type: RDNV1
 
 
 dataset:
   train:
-    name: Raw ShapeNet Table Train
+    name: Raw ShapeNet Car Train
     mode: raw_pair_shapenet_v0
     root: /sailhome/jiangthu/jzy/projects/CycleConsistentDeformation/data/dataset_shapenet/
-    category: Table
+    category: Car
     num_point: 2048
     phase: train
     num_worker: 12
     batch_size: 32
     norm: True
   val:
-    name: Raw ShapeNet Table Test
+    name: Raw ShapeNet Car Test
     mode: raw_pair_shapenet_v0
     root: /sailhome/jiangthu/jzy/projects/CycleConsistentDeformation/data/dataset_shapenet/
-    category: Table
+    category: Car
     num_point: 2048
     phase: train
     phase: val
@@ -38,6 +38,7 @@ model:
     version: 0
     arch: PointNetCls
     out_dim: 512
+    tanh: False
 
 train:
   learning_rate: 0.0005
@@ -47,7 +48,7 @@ train:
       weight: 100
     sym_CD:
       loss_type: CD
-      weight: 10
+      weight: 100
       sym_axis: 2
       
   lr_gamma: 0.5
@@ -64,4 +65,4 @@ logger:
   num_save_image: 10
 
 path:
-  root: /orion/u/jiangthu/projects/DeformationNet
+  root: ../

@@ -1,4 +1,4 @@
-name: RDDN_PointNetSeg_CD_shapenet_airplane_normcol_normpoint_c512
+name: DSN_Cat_ShapeNet_Chair
 use_tb_logger: true
 gpu_id: [0]
 type: RDNV1
@@ -6,20 +6,20 @@ type: RDNV1
 
 dataset:
   train:
-    name: Raw ShapeNet Airplane Train
+    name: Raw ShapeNet Chair Train
     mode: raw_pair_shapenet_v0
     root: /sailhome/jiangthu/jzy/projects/CycleConsistentDeformation/data/dataset_shapenet/
-    category: Airplane
+    category: Chair
     num_point: 2048
     phase: train
     num_worker: 12
     batch_size: 32
     norm: True
   val:
-    name: Raw ShapeNet Airplane Test
+    name: Raw ShapeNet Chair Test
     mode: raw_pair_shapenet_v0
     root: /sailhome/jiangthu/jzy/projects/CycleConsistentDeformation/data/dataset_shapenet/
-    category: Airplane
+    category: Chair
     num_point: 2048
     phase: train
     phase: val
@@ -35,9 +35,10 @@ model:
     feature_dim: 1536
     norm_column: True
   coeff:
-    version: 0
-    arch: PointNetCls
+    version: 1
+    arch: PointNetClsMix
     out_dim: 512
+    tanh: False
 
 train:
   learning_rate: 0.0005

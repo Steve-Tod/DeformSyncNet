@@ -1,4 +1,4 @@
-name: RDDN_PointNetSeg_CD_shapenet_chair_normcol_normpoint_c512
+name: DSN_ShapeNet_Chair
 use_tb_logger: true
 gpu_id: [0]
 type: RDNV1
@@ -38,6 +38,7 @@ model:
     version: 0
     arch: PointNetCls
     out_dim: 512
+    tanh: False
 
 train:
   learning_rate: 0.0005
@@ -53,7 +54,7 @@ train:
   lr_gamma: 0.5
   lr_scheme: MultiStepLR
   lr_steps: [4.0e4, 8.0e4, 1.2e5]
-  niter: 1.0e5
+  niter: 1.5e5
   save_freq: 5.0e3
   val_freq: 5.0e3
   val_metric: loss_fit_CD
@@ -64,4 +65,4 @@ logger:
   num_save_image: 10
 
 path:
-  root: /orion/u/jiangthu/projects/DeformationNet
+  root: ../
