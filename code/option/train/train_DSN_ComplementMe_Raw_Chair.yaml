@@ -1,0 +1,67 @@
+name: DSN_ComplementMe_Raw_Chair
+use_tb_logger: true
+gpu_id: [0]
+type: RDNV0
+
+
+dataset:
+  train:
+    name: Raw ComplementMe Chair Train
+    mode: raw_pair_v0 
+    file_list_path: /orion/u/jiangthu/datasets/ComplementMe/parametric/Chair_train_2048.txt
+    root: /orion/u/mhsung/projects/deformation-space-learning/ComplementMe/Chair/data/
+    num_point: 2048
+    phase: train
+    num_worker: 8
+    batch_size: 16
+  val:
+    name: Raw ComplementMe Chair Val
+    mode: raw_pair_v0
+    file_list_path: /orion/u/jiangthu/datasets/ComplementMe/parametric/Chair_val_2048.txt
+    root: /orion/u/mhsung/projects/deformation-space-learning/ComplementMe/Chair/data/
+    num_point: 2048
+    phase: val
+
+model:
+  init: xavier
+  model_type: RDDNV0
+  dict:
+    # PointNet feature
+    version: 0
+    arch: PointNetSeg
+    feature_dim: 192
+    norm_column: True
+  coeff:
+    version: 0
+    arch: PointNetCls
+    out_dim: 64
+    tanh: False
+
+train:
+  learning_rate: 0.001
+  loss:
+    fit_CD:
+      loss_type: CD
+      weight: 100
+    sym_CD:
+      loss_type: CD
+      weight: 100
+      sym_axis: 0
+  plot:
+    lim: [-0.5, 0.5]
+    seq: [0, 2, 1]
+  lr_gamma: 0.5
+  lr_scheme: MultiStepLR
+  lr_steps: [5.0e3, 1.0e4, 1.5e4]
+  niter: 2.0e4
+  save_freq: 1.0e3
+  val_freq: 1.0e3
+  val_metric: loss_fit_CD
+  weight_decay: 0
+
+logger:
+  print_freq: 100
+  num_save_image: 10
+
+path:
+  root: ../

@@ -2,6 +2,15 @@ import torch
 import random
 import numpy as np
 
+def read_cat2id_dict(path):
+    with open(path) as f:
+        lines = f.read().splitlines()
+    cat2id_dict = {}
+    for l in lines:
+        cat, identity = l.split('\t')
+        cat2id_dict[cat] = identity
+    return cat2id_dict
+
 # Normalization
 
 def center_bounding_box(points):

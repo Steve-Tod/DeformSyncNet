@@ -20,7 +20,13 @@ def create_dataloader(dataset, dataset_opt, sampler=None):
 def create_dataset(dataset_opt):
     mode = dataset_opt['mode']
     logger = logging.getLogger('base')
-    if mode == 'raw_pair_shapenet_v0':
+    if mode == 'param_pair_v0':
+        from .ParametricShape import ParametricPairTrainV0 as d
+    elif mode == 'param_pair_v1':
+        from .ParametricShape import ParametricPairTrainV1 as d
+    elif mode == 'raw_pair_v0':
+        from .RawShape import RawStructureNetPairTrainV0 as d
+    elif mode == 'raw_pair_shapenet_v0':
         from .RawShape import RawShapeNetPairTrainV0 as d
     else:
         raise NotImplementedError('Dataset [{:s}] is not recognized.'.format(mode))

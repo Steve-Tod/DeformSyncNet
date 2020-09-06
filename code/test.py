@@ -103,6 +103,7 @@ def main():
     parser.add_argument('-test_data_root', type=str, help='Path to test data dir.')
     parser.add_argument('-data_root', type=str, help='Path to full data dir.')
     parser.add_argument('-out_dir', type=str, default=None, help='Output directory.')
+    parser.add_argument('-load_path', type=str, default=None, help='Pretrained model path.')
     args = parser.parse_args()
     opt = parse(args.opt, is_train=True, gpu0=True)
     test_data_root = args.test_data_root
@@ -121,7 +122,10 @@ def main():
     # get and load model
     torch.set_grad_enabled(False)
     model = define_net(opt['model'])
-    load_path = os.path.join(opt['path']['model'], 'best_model.pth')
+    if args.load_path is None:
+        load_path = os.path.join(opt['path']['model'], 'best_model.pth'))
+    else:
+        load_path = args.load_path
     print('Loading from %s' % load_path)
     sd = torch.load(load_path)
     model.load_state_dict(sd)
