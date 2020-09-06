@@ -1,13 +1,13 @@
 # DeformSyncNet
 Pytorch implementation of  of DeformSyncNet: Deformation Transfer via Synchronized Shape Deformation Spaces (SIGGRAPH Asia 2020)
 
-## Citation
+[Minhyuk Sung](http://mhsung.github.io/)\*, [Zhenyu Jiang](http://jiangzhenyu.xyz)\*, [Panos Achlioptas](http://ai.stanford.edu/~optas/), [Niloy J. Mitra](http://www0.cs.ucl.ac.uk/staff/n.mitra/), [Leonidas J. Guibas](https://geometry.stanford.edu/member/guibas/) (\* equal contribution)
 
 
 
 ## Introduction
 
-
+Shape deformation is an important component in any geometry processing toolbox. The goal is to enable intuitive deformations of single or multiple shapes or to transfer example deformations to new shapes while preserving the plausibility of the deformed shape(s). Existing approaches assume access to point-level or part-level correspondence or establish them in a preprocessing phase, thus limiting the scope and generality of such approaches. We propose DeformSyncNet, a new approach that allows consistent and synchronized shape deformations without requiring explicit correspondence information. Technically, we achieve this by encoding deformations into a class-specific idealized latent space while decoding them into an individual, model-specific linear deformation action space, operating *directly* in 3D. The underlying encoding and decoding are performed by specialized (jointly trained) neural networks. By design, the inductive bias of our networks results in a deformation space with several desirable properties, such as path invariance across different deformation pathways, which are then also approximately preserved in real space. We qualitatively and quantitatively evaluate our framework against multiple alternative approaches and demonstrate improved performance.
 
 ## Dependencies
 
@@ -23,15 +23,15 @@ Pytorch implementation of  of DeformSyncNet: Deformation Transfer via Synchroniz
 
 #### ShapeNet 
 
-**Full raw data(train, val and test)** can be downloaded with `wget --no-check-certificate https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/ShapeNetFullData.zip`. Please download and unzip the `ShapeNetFullData.zip` file.
+**Full raw data(train, val and test)** can be downloaded [here](https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/ShapeNetFullData.zip)(you can use `wget --no-check-certificate {url}` to download in commandline). Please download and unzip the `ShapeNetFullData.zip` file.
 
-**Prepared test data** can be downloaded with `wget --no-check-certificate https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/ShapeNetTestData.zip`. Please download and unzip the `ShapeNetTestData.zip` file.
+**Prepared test data** can be downloaded [here](https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/ShapeNetTestData.zip)(you can use `wget --no-check-certificate {url}` to download in commandline). Please download and unzip the `ShapeNetTestData.zip` file.
 
 #### ComplementMe 
 
-**Full raw data(train, val and test)** can be downloaded with `wget --no-check-certificate https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/ComplementMeFullData.zip`. Please download and unzip the `ComplementMeFullData.zip` file.
+**Full raw data(train, val and test)** can be downloaded [here](https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/ComplementMeFullData.zip)(you can use `wget --no-check-certificate {url}` to download in commandline). Please download and unzip the `ComplementMeFullData.zip` file
 
-**Prepared test data** can be downloaded with `wget --no-check-certificate https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/ComplementMeTestData.zip`. Please download and unzip the `ComplementMeTestData.zip` file.
+**Prepared test data** can be downloaded [here](https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/ComplementMeTestData.zip)(you can use `wget --no-check-certificate {url}` to download in commandline). Please download and unzip the `ComplementMeTestData.zip` file.
 
 ## Training
 
