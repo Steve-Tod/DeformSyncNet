@@ -2,7 +2,7 @@
 
 [Minhyuk Sung](http://mhsung.github.io/)\*, [Zhenyu Jiang](http://jiangzhenyu.xyz)\*, [Panos Achlioptas](http://ai.stanford.edu/~optas/), [Niloy J. Mitra](http://www0.cs.ucl.ac.uk/staff/n.mitra/), [Leonidas J. Guibas](https://geometry.stanford.edu/member/guibas/) (\* equal contribution)
 
-SIGGRAPH Asia 2020
+SIGGRAPH Asia 2020 (To appear)
 
 [Project](https://mhsung.github.io/deform-sync-net.html) | [arxiv](https://arxiv.org/abs/2009.01456)
 
