@@ -1,19 +1,19 @@
-# DeformSyncNet
-Pytorch implementation of  of DeformSyncNet: Deformation Transfer via Synchronized Shape Deformation Spaces
-
-(SIGGRAPH Asia 2020)
-[[arxiv]](https://arxiv.org/abs/2009.01456)
+# DeformSyncNet: Deformation Transfer via Synchronized Shape Deformation Spaces
 
 [Minhyuk Sung](http://mhsung.github.io/)\*, [Zhenyu Jiang](http://jiangzhenyu.xyz)\*, [Panos Achlioptas](http://ai.stanford.edu/~optas/), [Niloy J. Mitra](http://www0.cs.ucl.ac.uk/staff/n.mitra/), [Leonidas J. Guibas](https://geometry.stanford.edu/member/guibas/) (\* equal contribution)
+
+SIGGRAPH Asia 2020
+
+[Project](https://mhsung.github.io/deform-sync-net.html) | [arxiv](https://arxiv.org/abs/2009.01456)
 
 ## Citation
 
 ```bibtex
-@misc{Sung:2020,
-  Author = {Minhyuk Sung and Zhenyu Jiang and Panos Achlioptas and Niloy J. Mitra and Leonidas J. Guibas},
-  Title = {DeformSyncNet: Deformation Transfer via Synchronized Shape Deformation Spaces},
-  Year = {2020},
-  Eprint = {arXiv:2009.01456},
+@article{Sung:2020,
+  author = {Sung, Minhyuk and Jiang, Zhenyu and Achlioptas, Panos and Mitra, Niloy J. and Guibas, Leonidas J.},
+  title = {DeformSyncNet: Deformation Transfer via Synchronized Shape Deformation Spaces},
+  Journal = {ACM Transactions on Graphics (Proc. of SIGGRAPH Asia)}, 
+  year = {2020}
 }
 ```
 
