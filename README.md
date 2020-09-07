@@ -1,9 +1,21 @@
 # DeformSyncNet
-Pytorch implementation of  of DeformSyncNet: Deformation Transfer via Synchronized Shape Deformation Spaces (SIGGRAPH Asia 2020)
+Pytorch implementation of  of DeformSyncNet: Deformation Transfer via Synchronized Shape Deformation Spaces
+
+(SIGGRAPH Asia 2020)
+[[arxiv]](https://arxiv.org/abs/2009.01456)
 
 [Minhyuk Sung](http://mhsung.github.io/)\*, [Zhenyu Jiang](http://jiangzhenyu.xyz)\*, [Panos Achlioptas](http://ai.stanford.edu/~optas/), [Niloy J. Mitra](http://www0.cs.ucl.ac.uk/staff/n.mitra/), [Leonidas J. Guibas](https://geometry.stanford.edu/member/guibas/) (\* equal contribution)
 
+## Citation
 
+```bibtex
+@misc{Sung:2020,
+  Author = {Minhyuk Sung and Zhenyu Jiang and Panos Achlioptas and Niloy J. Mitra and Leonidas J. Guibas},
+  Title = {DeformSyncNet: Deformation Transfer via Synchronized Shape Deformation Spaces},
+  Year = {2020},
+  Eprint = {arXiv:2009.01456},
+}
+```
 
 ## Introduction
 
@@ -66,3 +78,14 @@ python test_ComplementMe.py -opt path/to/train_option -test_data_root path/to/te
 ```
 
 It will load model weight from `path/to/model`. The default loading directory is `experiment/{exp_name}/model/best_model.pth`, which means when you test model after training, you can omit the `-load_path`. Generated shapes will be save in `path/to/save_dir`. The default save directory is `result/ShapeNet/{category}`.
+
+## Pretrained Models
+
+### ShapeNet
+
+[Airplane](https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/models/DSN_ShapeNet_Airplane.pth), [Car](https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/models/DSN_ShapeNet_Car.pth), [Chair](https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/models/DSN_ShapeNet_Chair.pth), [Lamp](https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/models/DSN_ShapeNet_Lamp.pth), [Table](https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/models/DSN_ShapeNet_Table.pth)
+
+### ComplementMe
+
+[Airplane](https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/models/DSN_ComplementMe_Airplane.pth), [Car](https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/models/DSN_ComplementMe_Car.pth), [Chair](https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/models/DSN_ComplementMe_Chair.pth), [Sofa](https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/models/DSN_ComplementMe_Sofa.pth), [Table](https://shapenet.cs.stanford.edu/media/minhyuk/DeformSyncNet/data/models/DSN_ComplementMe_Table.pth)
+
